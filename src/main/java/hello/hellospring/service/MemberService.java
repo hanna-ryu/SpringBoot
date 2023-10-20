@@ -9,7 +9,12 @@ import java.util.Optional;
 
 //서비스 클래스는 비즈니스에 의존적으로 개발함. (용어 선택시!)
 public class MemberService {
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
+
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
+
     /** 회원가입 **/
     public Long join(Member member){
         //같은 이름이 있는 중복 회원 X
